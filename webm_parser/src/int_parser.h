@@ -110,7 +110,7 @@ class IntParser : public ElementParser {
   T value_;
   T default_value_;
   int num_bytes_remaining_ = -1;
-  int size_;
+  int size_ = 0;
 };
 
 using SignedIntParser = IntParser<std::int64_t>;

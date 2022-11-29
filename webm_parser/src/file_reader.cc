@@ -20,12 +20,12 @@ namespace webm {
 
 FileReader::FileReader(FILE* file) : file_(file) { assert(file); }
 
-FileReader::FileReader(FileReader&& other)
+FileReader::FileReader(FileReader&& other) noexcept
     : file_(std::move(other.file_)), position_(other.position_) {
   other.position_ = 0;
 }
 
-FileReader& FileReader::operator=(FileReader&& other) {
+FileReader& FileReader::operator=(FileReader&& other) noexcept {
   if (this != &other) {
     file_ = std::move(other.file_);
     position_ = other.position_;
@@ -99,7 +99,7 @@ Status FileReader::Skip(std::uint64_t num_to_skip,
       num_to_read = static_cast<std::size_t>(num_to_skip);
     }
 
-    std::size_t actual =
+    actual =
         std::fread(static_cast<void*>(junk), 1, num_to_read, file_.get());
     *num_actually_skipped += static_cast<std::uint64_t>(actual);
     position_ += static_cast<std::uint64_t>(actual);

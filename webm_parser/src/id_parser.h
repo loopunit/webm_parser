@@ -37,7 +37,7 @@ class IdParser : public Parser {
 
  private:
   int num_bytes_remaining_ = -1;
-  Id id_;
+  Id id_ = Id::kNull;
 };
 
 }  // namespace webm

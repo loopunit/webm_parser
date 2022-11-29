@@ -137,7 +137,7 @@ struct ElementMetadata {
   /**
    The EBML ID of the element.
    */
-  Id id;
+  Id id = Id::kNull;
 
   /**
    The number of bytes that were used to encode the EBML ID and element size.
@@ -146,7 +146,7 @@ struct ElementMetadata {
    performed to the middle of an element, so its header was not parsed), this
    will be the value `kUnknownHeaderSize`.
    */
-  std::uint32_t header_size;
+  std::uint32_t header_size = 0;
 
   /**
    The size of the element.
@@ -157,7 +157,7 @@ struct ElementMetadata {
    If the size of the element's body is unknown, this will be the value
    `kUnknownElementSize`.
    */
-  std::uint64_t size;
+  std::uint64_t size = 0;
 
   /**
    The absolute byte position of the element, starting at the first byte of the
@@ -167,7 +167,7 @@ struct ElementMetadata {
    was performed to the middle of an element), this will be the value
    `kUnknownElementPosition`.
    */
-  std::uint64_t position;
+  std::uint64_t position = 0;
 
   /**
    Returns true if every member within the two objects are equal.

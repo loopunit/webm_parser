@@ -47,8 +47,8 @@ class VarIntParser : public Parser {
 
  private:
   int num_bytes_remaining_ = -1;
-  int total_data_bytes_;
-  std::uint64_t value_;
+  int total_data_bytes_ = 0;
+  std::uint64_t value_ = 0;
 };
 
 }  // namespace webm

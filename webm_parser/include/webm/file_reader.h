@@ -50,7 +50,7 @@ class FileReader : public Reader {
    \param other The source reader to move. After moving, it will be reset to an
    empty stream.
    */
-  FileReader(FileReader&& other);
+  FileReader(FileReader&& other) noexcept;
 
   /**
    Moves the provided reader into this reader.
@@ -59,7 +59,7 @@ class FileReader : public Reader {
    empty stream. May be equal to `*this`, in which case this is a no-op.
    \return `*this`.
    */
-  FileReader& operator=(FileReader&& other);
+  FileReader& operator=(FileReader&& other) noexcept;
 
   Status Read(std::size_t num_to_read, std::uint8_t* buffer,
               std::uint64_t* num_actually_read) override;

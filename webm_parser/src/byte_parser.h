@@ -133,7 +133,7 @@ class ByteParser : public ElementParser {
  private:
   T value_;
   T default_value_;
-  std::size_t total_read_;
+  std::size_t total_read_ { 0 };
 };
 
 using StringParser = ByteParser<std::string>;

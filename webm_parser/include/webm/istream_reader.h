@@ -53,7 +53,7 @@ class IstreamReader : public Reader {
    \param other The source reader to move. After moving, it will be reset to an
    empty stream.
    */
-  IstreamReader(IstreamReader&& other);
+  IstreamReader(IstreamReader&& other) noexcept;
 
   /**
    Moves the provided reader into this reader.
@@ -62,7 +62,7 @@ class IstreamReader : public Reader {
    empty stream. May be equal to `*this`, in which case this is a no-op.
    \return `*this`.
    */
-  IstreamReader& operator=(IstreamReader&& other);
+  IstreamReader& operator=(IstreamReader&& other) noexcept;
 
   Status Read(std::size_t num_to_read, std::uint8_t* buffer,
               std::uint64_t* num_actually_read) override;

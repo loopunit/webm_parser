@@ -30,7 +30,7 @@ class UnknownParser : public ElementParser {
   ElementMetadata metadata_;
 
   // The number of bytes remaining that have not been read in the element.
-  std::uint64_t bytes_remaining_;
+  std::uint64_t bytes_remaining_ = 0;
 };
 
 }  // namespace webm

@@ -54,7 +54,7 @@ class WebmParser::DocumentParser {
         case State::kReadingChildId: {
           assert(child_parser_ == nullptr);
           status = id_parser_.Feed(callback, reader, &num_bytes_read);
-          child_metadata_.header_size += num_bytes_read;
+          child_metadata_.header_size += static_cast<uint32_t>(num_bytes_read);
           if (!status.completed_ok()) {
             if (status.code == Status::kEndOfFile &&
                 reader->Position() == child_metadata_.position) {
@@ -70,7 +70,7 @@ class WebmParser::DocumentParser {
         case State::kReadingChildSize: {
           assert(child_parser_ == nullptr);
           status = size_parser_.Feed(callback, reader, &num_bytes_read);
-          child_metadata_.header_size += num_bytes_read;
+          child_metadata_.header_size += static_cast<uint32_t>(num_bytes_read);
           if (!status.completed_ok()) {
             return status;
           }

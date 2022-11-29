@@ -34,6 +34,8 @@ namespace webm {
 // http://www.webmproject.org/docs/webm-encryption/#42-new-matroskawebm-elements
 // http://matroska.org/technical/specs/index.html
 enum class Id : std::uint32_t {
+  kNull = 0,
+
   // The MatroskaID alias links to the WebM and Matroska specifications.
   // The WebMID alias links to the WebM specification.
   // The WebMTable alias produces a table given the following arguments:

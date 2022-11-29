@@ -393,8 +393,8 @@ class MasterValueParser : public ElementParser {
 
   T value_;
   Action action_ = Action::kRead;
-  bool parse_complete_;
-  bool started_done_;
+  bool parse_complete_ = false;
+  bool started_done_ = false;
   // master_parser_ must be after value_ to ensure correct initialization order.
   MasterParser master_parser_;
 

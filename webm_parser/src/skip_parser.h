@@ -27,7 +27,7 @@ class SkipParser : public ElementParser {
               std::uint64_t* num_bytes_read) override;
 
  private:
-  std::uint64_t num_bytes_remaining_;
+  std::uint64_t num_bytes_remaining_ = 0;
 };
 
 }  // namespace webm

@@ -18,12 +18,12 @@
 
 namespace webm {
 
-IstreamReader::IstreamReader(IstreamReader&& other)
+IstreamReader::IstreamReader(IstreamReader&& other) noexcept
     : istream_(std::move(other.istream_)), position_(other.position_) {
   other.position_ = 0;
 }
 
-IstreamReader& IstreamReader::operator=(IstreamReader&& other) {
+IstreamReader& IstreamReader::operator=(IstreamReader&& other) noexcept {
   if (this != &other) {
     istream_ = std::move(other.istream_);
     position_ = other.position_;
@@ -111,7 +111,7 @@ Status IstreamReader::Skip(std::uint64_t num_to_skip,
     }
 
     istream_->read(junk, num_to_read);
-    std::streamsize actual = istream_->gcount();
+    actual = istream_->gcount();
     *num_actually_skipped += static_cast<std::uint64_t>(actual);
     position_ += static_cast<std::uint64_t>(actual);
     num_to_skip -= static_cast<std::uint64_t>(actual);
