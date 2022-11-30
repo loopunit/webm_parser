@@ -44,12 +44,12 @@ struct FrameMetadata {
    Absolute byte position (from the beginning of the byte stream/file) of the
    frame start.
    */
-  std::uint64_t position;
+  std::uint64_t position { 0 };
 
   /**
    Size (in bytes) of the frame.
    */
-  std::uint64_t size;
+  std::uint64_t size { 0 };
 
   /**
    Returns true if every member within the two objects are equal.

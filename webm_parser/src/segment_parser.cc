@@ -26,7 +26,10 @@ SegmentParser::SegmentParser()
                    MakeChild<InfoParser>(Id::kInfo),
                    MakeChild<SeekHeadParser>(Id::kSeekHead),
                    MakeChild<TagsParser>(Id::kTags),
-                   MakeChild<TracksParser>(Id::kTracks)) {}
+                   MakeChild<TracksParser>(Id::kTracks)),
+      begin_done_ {},
+      parse_completed_ {}
+{}
 
 Status SegmentParser::Init(const ElementMetadata& metadata,
                            std::uint64_t max_size) {

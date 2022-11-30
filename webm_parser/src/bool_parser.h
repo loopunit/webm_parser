@@ -28,7 +28,7 @@ namespace webm {
 class BoolParser : public ElementParser {
  public:
   explicit BoolParser(bool default_value = false)
-      : default_value_(default_value) {}
+      : default_value_(default_value), value_{}, size_ {} {}
 
   Status Init(const ElementMetadata& metadata,
               std::uint64_t max_size) override {

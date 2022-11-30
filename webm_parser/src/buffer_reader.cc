@@ -28,12 +28,12 @@ BufferReader::BufferReader(const std::vector<std::uint8_t>& vector)
 BufferReader::BufferReader(std::vector<std::uint8_t>&& vector)
     : data_(std::move(vector)) {}
 
-BufferReader::BufferReader(BufferReader&& other)
+BufferReader::BufferReader(BufferReader&& other) noexcept
     : data_(std::move(other.data_)), pos_(other.pos_) {
   other.pos_ = 0;
 }
 
-BufferReader& BufferReader::operator=(BufferReader&& other) {
+BufferReader& BufferReader::operator=(BufferReader&& other) noexcept {
   if (this != &other) {
     data_ = std::move(other.data_);
     pos_ = other.pos_;

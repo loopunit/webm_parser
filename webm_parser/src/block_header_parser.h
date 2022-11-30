@@ -20,9 +20,9 @@
 namespace webm {
 
 struct BlockHeader {
-  std::uint64_t track_number;
-  std::int16_t timecode;
-  std::uint8_t flags;
+  std::uint64_t track_number { 0 };
+  std::int16_t timecode { 0 };
+  std::uint8_t flags { 0 };
 
   bool operator==(const BlockHeader& other) const {
     return track_number == other.track_number && timecode == other.timecode &&

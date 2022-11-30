@@ -60,7 +60,7 @@ class BufferReader : public Reader {
    \param other The source reader to move. After moving, it will be reset to an
    empty stream.
    */
-  BufferReader(BufferReader&&);
+  BufferReader(BufferReader&&) noexcept;
 
   /**
    Moves the provided reader into this reader.
@@ -69,7 +69,7 @@ class BufferReader : public Reader {
    empty stream. May be equal to `*this`, in which case this is a no-op.
    \return `*this`.
    */
-  BufferReader& operator=(BufferReader&&);
+  BufferReader& operator=(BufferReader&&) noexcept;
 
   /**
    Creates a new `BufferReader` populated with the provided bytes.

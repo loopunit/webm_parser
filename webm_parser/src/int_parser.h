@@ -39,7 +39,8 @@ class IntParser : public ElementParser {
   // Constructs a new parser which will use the given default_value as the
   // value for the element if its size is zero. Defaults to the value zero (as
   // the EBML spec indicates).
-  explicit IntParser(T default_value = {}) : default_value_(default_value) {}
+  explicit IntParser(T default_value = {})
+      : default_value_(default_value), value_{} {}
 
   IntParser(IntParser&&) = default;
   IntParser& operator=(IntParser&&) = default;
@@ -80,7 +81,7 @@ class IntParser : public ElementParser {
     // Sign extend the integer if it's a negative value. EBML allows for
     // negative integers to drop superfluous sign bytes (i.e. -1 can be encoded
     // as 0xFF instead of 0xFFFFFFFFFFFFFFFF).
-    if (std::is_signed<T>::value && num_bytes_remaining_ == 0 && size_ > 0) {
+    if constexpr (std::is_signed<T>::value) if (num_bytes_remaining_ == 0 && size_ > 0) {
       std::uint64_t sign_bits = std::numeric_limits<std::uint64_t>::max()
                                 << (8 * size_ - 1);
       std::uint64_t unsigned_value = static_cast<std::uint64_t>(value_);

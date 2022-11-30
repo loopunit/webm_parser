@@ -60,7 +60,9 @@ class VideoParser : public MasterValueParser<Video> {
                                                   &Video::aspect_ratio_type),
             MakeChild<FloatParser>(Id::kFrameRate, &Video::frame_rate),
             MakeChild<ColourParser>(Id::kColour, &Video::colour),
-            MakeChild<ProjectionParser>(Id::kProjection, &Video::projection)) {}
+            MakeChild<ProjectionParser>(Id::kProjection, &Video::projection)),
+        display_width_has_value_ {},
+        display_height_has_value_{} {}
 
   Status Init(const ElementMetadata& metadata,
               std::uint64_t max_size) override {

@@ -107,7 +107,7 @@ class ByteParser : public ElementParser {
 
     // UTF-8 and ASCII string elements can be padded with NUL characters at the
     // end, which should be ignored.
-    if (std::is_same<T, std::string>::value && status.completed_ok()) {
+    if constexpr (std::is_same<T, std::string>::value) if (status.completed_ok()) {
       while (!value_.empty() && value_.back() == '\0') {
         value_.pop_back();
       }

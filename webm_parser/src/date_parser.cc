@@ -22,7 +22,7 @@ namespace webm {
 // http://matroska.org/technical/specs/index.html#EBML_ex
 // https://github.com/Matroska-Org/ebml-specification/blob/master/specification.markdown#ebml-element-types
 DateParser::DateParser(std::int64_t default_value)
-    : default_value_(default_value) {}
+    : default_value_(default_value), value_{} {}
 
 Status DateParser::Init(const ElementMetadata& metadata,
                         std::uint64_t max_size) {

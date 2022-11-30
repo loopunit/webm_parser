@@ -35,7 +35,8 @@ class AudioParser : public MasterValueParser<Audio> {
                                    &Audio::output_frequency)
                 .NotifyOnParseComplete(),
             MakeChild<UnsignedIntParser>(Id::kChannels, &Audio::channels),
-            MakeChild<UnsignedIntParser>(Id::kBitDepth, &Audio::bit_depth)) {}
+            MakeChild<UnsignedIntParser>(Id::kBitDepth, &Audio::bit_depth)),
+        output_frequency_has_value_{} {}
 
   Status Init(const ElementMetadata& metadata,
               std::uint64_t max_size) override {

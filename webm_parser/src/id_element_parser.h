@@ -47,7 +47,7 @@ class IdElementParser : public ElementParser {
   }
 
  private:
-  Id value_;
+  Id value_ {};
   int num_bytes_remaining_ = -1;
 };
 

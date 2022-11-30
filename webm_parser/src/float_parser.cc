@@ -20,7 +20,7 @@
 namespace webm {
 
 FloatParser::FloatParser(double default_value)
-    : default_value_(default_value) {}
+    : default_value_(default_value), uint64_value_ {}, value_ {}, use_32_bits_ {} {}
 
 Status FloatParser::Init(const ElementMetadata& metadata,
                          std::uint64_t max_size) {
