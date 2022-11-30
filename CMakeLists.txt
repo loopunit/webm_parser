@@ -213,7 +213,7 @@ set_target_properties(webm_parser PROPERTIES PUBLIC_HEADER "${webm_parser_public
 
 set_target_properties(webm_parser
     PROPERTIES
-        CXX_STANDARD 11
+        CXX_STANDARD 20
         CXX_EXTENSIONS off)
     
 target_compile_definitions(webm_parser 
@@ -241,7 +241,7 @@ if(${ENABLE_SAMPLES})
 endif()
 
 if(${ENABLE_TESTS})
-    target_include_directories(webm_parser_tests PRIVATE "${GTEST_SRC_DIR}/googlemock/include")
     add_executable(webm_parser_tests ${webm_parser_tests_sources})
-    target_link_libraries(webm_parser_tests PRIVATE gmock gtest webm)
+    target_include_directories(webm_parser_tests PRIVATE "${GTEST_SRC_DIR}/googlemock/include")
+    target_link_libraries(webm_parser_tests PRIVATE gmock gtest webm_parser)
 endif()
